@@ -1,7 +1,6 @@
-import React from "react";
-import "./About.css";
+import './About.css';
 
-function About() {
+const About = () => {
   return (
     <div className="about__container">
       <p>
@@ -11,6 +10,6 @@ function About() {
       <span>− George Orwell, 1984</span>
     </div>
   );
-}
+};
 
 export default About;
