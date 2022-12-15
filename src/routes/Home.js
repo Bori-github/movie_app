@@ -27,16 +27,7 @@ const Home = () => {
       {movies && movies.length > 0 ? (
         <div className="movies">
           {movies.map((movie) => (
-            <Movie
-              key={movie.id}
-              id={movie.id}
-              year={movie.year}
-              title={movie.title}
-              title_long={movie.title_long}
-              summary={movie.summary}
-              poster={movie.medium_cover_image}
-              genres={movie.genres}
-            />
+            <Movie key={movie.id} movieData={movie} />
           ))}
         </div>
       ) : (

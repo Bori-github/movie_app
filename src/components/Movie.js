@@ -1,25 +1,15 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import "./Movie.css";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import './Movie.css';
 
-function Movie({ id, year, title, title_long, summary, poster, genres }) {
+const Movie = ({ movieData }) => {
+  const { id, large_cover_image, title, year, genres, summary } = movieData;
+
   return (
-    <Link
-      to={{
-        pathname: `/movie/${id}`,
-        state: {
-          year,
-          title,
-          title_long,
-          summary,
-          poster,
-          genres,
-        },
-      }}
-    >
+    <Link to={`/movie/${id}`}>
       <div className="movie">
-        <img src={poster} alt={title} title={title} />
+        <img src={large_cover_image} alt={title} title={title} />
         <div className="movie__info">
           <h3 className="movie__title">{title}</h3>
           <h5 className="movie__year">{year}</h5>
@@ -35,15 +25,17 @@ function Movie({ id, year, title, title_long, summary, poster, genres }) {
       </div>
     </Link>
   );
-}
+};
 
 Movie.propTypes = {
-  id: PropTypes.number.isRequired,
-  year: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
-  summary: PropTypes.string.isRequired,
-  poster: PropTypes.string.isRequired,
-  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
+  movieData: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    year: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    summary: PropTypes.string.isRequired,
+    large_cover_image: PropTypes.string.isRequired,
+    genres: PropTypes.arrayOf(PropTypes.string).isRequired,
+  }),
 };
 
 export default Movie;
