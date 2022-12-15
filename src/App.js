@@ -7,7 +7,7 @@ import Navigation from './components/Navigation';
 
 function App() {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Navigation />
       <Routes>
         <Route path="/" exact element={<Home />} />
